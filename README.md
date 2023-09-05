@@ -4,11 +4,17 @@ DATA ANALYST PORTFOLIO SQL PROJECT FOR BEGINNERS
 
 TESTING TABLEAU/ POWER BI REPORTS IN SQL
 Create Table
+
 create table hrdata
+
 (
+
 	emp_no int8 PRIMARY KEY,
+ 
 	gender varchar(50) NOT NULL,
+ 
 	marital_status varchar(50),
+ 
 	age_band varchar(50),
 	age int8,
 	department varchar(50),
