@@ -1,10 +1,10 @@
-# SQL_HR_Analytics
+# Data Analyst_Portfolio_SQL_HR_Analytics
 
-DATA ANALYST PORTFOLIO SQL PROJECT FOR BEGINNERS
+**🔹 About the Project**
 
 TESTING TABLEAU/ POWER BI REPORTS IN SQL
 
-Create Table
+🔸 **Create Table**
 
 create table hrdata
 
@@ -26,44 +26,43 @@ create table hrdata
 	active_employee int8
 )
 
-Import Data in Table Using Query
+ 🔸 **Import Data in Table Using Query ::**
 
 COPY hrdata FROM 'D:\hrdata.csv' DELIMITER ',' CSV HEADER;
 
-Employee Count:
+🔸 **Employee Count::**
 
 select sum(employee_count) as Employee_Count from hrdata;
 
-Attrition Count:
+🔸 **Attrition Count::**
 
 select count(attrition) from hrdata where attrition='Yes';
 
-Attrition Rate:
+🔸 **Attrition Rate:**
 
 select 
 round (((select count(attrition) from hrdata where attrition='Yes')/ 
 sum(employee_count)) * 100,2)
 from hrdata;
 
-Active Employee:
+🔸 **Active Employee::**
 
 select sum(employee_count) - (select count(attrition) from hrdata  where attrition='Yes') from hrdata;
 OR
 select (select sum(employee_count) from hrdata) - count(attrition) as active_employee from hrdata
 where attrition='Yes';
 
-Average Age:
-
+🔸 **Average Age::**
 select round(avg(age),0) from hrdata;
 
-Attrition by Gender
+🔸 **Attrition by Gender ::**
 
 select gender, count(attrition) as attrition_count from hrdata
 where attrition='Yes'
 group by gender
 order by count(attrition) desc;
 
-Department wise Attrition:
+ 🔸 **Department wise Attrition::**
 
 select department, count(attrition), round((cast (count(attrition) as numeric) / 
 (select count(attrition) from hrdata where attrition= 'Yes')) * 100, 2) as pct from hrdata
@@ -72,20 +71,20 @@ group by department
 order by count(attrition) desc;
 
 
-No of Employee by Age Group
+ 🔸 **No of Employee by Age Group ::**
 
 SELECT age,  sum(employee_count) AS employee_count FROM hrdata
 GROUP BY age
 order by age;
 
-Education Field wise Attrition:
+🔸 **Education Field wise Attrition ::**
 
 select education_field, count(attrition) as attrition_count from hrdata
 where attrition='Yes'
 group by education_field
 order by count(attrition) desc;
 
-Attrition Rate by Gender for different Age Group
+ 🔸 **Attrition Rate by Gender for different Age Group ::**
 
 select age_band, gender, count(attrition) as attrition, 
 round((cast(count(attrition) as numeric) / (select count(attrition) from hrdata where attrition = 'Yes')) * 100,2) as pct
@@ -94,7 +93,7 @@ where attrition = 'Yes'
 group by age_band, gender
 order by age_band, gender desc;
 
-Job Satisfaction Rating
+ 🔸**Job Satisfaction Rating**
 
 -Run this query first to activate the cosstab() function in postgres
 CREATE EXTENSION IF NOT EXISTS tablefunc;
